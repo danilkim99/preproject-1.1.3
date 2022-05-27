@@ -15,7 +15,7 @@ public class Util {
     public static Statement statement;
     public static final String USER_NAME = "passwoord";
     public static final String PASSWORD = "name";
-    public static final String URL = "jdbc:mysql://localhost:3306/mysql";
+    public static final String URL = "url";
 
     static {
         try {
