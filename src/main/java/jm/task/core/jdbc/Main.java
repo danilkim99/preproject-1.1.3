@@ -1,7 +1,10 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+
+import java.util.List;
 
 public class Main {
     private final static UserService userService = new UserServiceImpl();
@@ -17,7 +20,10 @@ public class Main {
 
         userService.removeUserById(2);
 
-        userService.getAllUsers();
+        List<User> user = userService.getAllUsers();
+        for (User value : user) {
+            System.out.println(value);
+        }
 
         userService.cleanUsersTable();
 
