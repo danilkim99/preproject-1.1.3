@@ -18,8 +18,8 @@ public class Util {
     // реализуйте настройку соеденения с БД
     public static Connection connection;
     public static Statement statement;
-    public static final String USER_NAME = "root";
-    public static final String PASSWORD = "Danilkim99!";
+    public static final String USER_NAME = "username";
+    public static final String PASSWORD = "password";
     public static final String URL = "jdbc:mysql://localhost:3306/mysql";
     private static SessionFactory sessionFactory = null;
 
