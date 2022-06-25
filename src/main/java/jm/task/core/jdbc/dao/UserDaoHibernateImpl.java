@@ -12,13 +12,13 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
-    String sqlCreate = "CREATE TABLE users"
+    String sqlCreate = "CREATE TABLE IF NOT EXISTS users"
             + "( id INT(5) NOT NULL AUTO_INCREMENT, "
             + "name VARCHAR(50), "
             + "lastName VARCHAR(50), "
             + "age INT(5), "
             + "PRIMARY KEY (id));";
-    String sqlDrop = "DROP TABLE USERS";
+    String sqlDrop = "DROP TABLE IF EXISTS users";
     String sqlClean = "TRUNCATE TABLE users";
     SessionFactory sessionFactory = Util.getSessionFactory();
     Transaction transaction = null;

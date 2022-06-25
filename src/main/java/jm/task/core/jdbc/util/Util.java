@@ -16,11 +16,12 @@ import java.util.Properties;
 
 public class Util {
     // реализуйте настройку соеденения с БД
-    public static Connection connection;
-    public static Statement statement;
-    public static final String USER_NAME = "root";
-    public static final String PASSWORD = "Danilkim99!";
-    public static final String URL = "jdbc:mysql://localhost:3306/mysql";
+    private static Connection connection;
+    private static Statement statement;
+    private static String USER_NAME = "root";
+    private static String PASSWORD = "Danilkim99!";
+    private static final String URL = "jdbc:mysql://localhost:3306/mysql";
+    private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static SessionFactory sessionFactory = null;
 
     public static SessionFactory getSessionFactory() {
@@ -47,20 +48,17 @@ public class Util {
         }
         return sessionFactory;
     }
-    static {
+
+
+    public static Connection getConnection() {
         try {
-            connection = DriverManager.getConnection(URL,USER_NAME, PASSWORD);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException();
+            Class.forName(driver);
+            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            return connection;
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
         }
-    }
-    static {
-        try {
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw  new RuntimeException();
-        }
+        return null;
     }
 }
+
